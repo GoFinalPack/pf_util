@@ -5,6 +5,7 @@ import (
 	"reflect"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 )
 
 /**
@@ -287,15 +288,22 @@ func address(address string, sensitiveSize int) string {
 		return ""
 	}
 
-	length := len(address)
+	length := utf8.RuneCountInString(address)
+	if sensitiveSize < 0 {
+		// 处理敏感长度为负数的情况
+		return address
+	}
+
 	if sensitiveSize >= length {
 		// Mask the entire address if sensitiveSize is greater than or equal to the address length
 		return strings.Repeat("*", length)
 	}
 
 	// Mask the part of the address
+	// 获取每个字符的切割位置
+	runes := []rune(address)
 	maskedPart := strings.Repeat("*", sensitiveSize)
-	return address[:length-sensitiveSize] + maskedPart
+	return string(runes[:length-sensitiveSize]) + maskedPart
 }
 
 /**
