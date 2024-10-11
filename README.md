@@ -15,7 +15,7 @@
 
 ## 代码
 
-```
+```go
 package tests
 
 import (
@@ -63,3 +63,6 @@ func TestCustomerChineseName(t *testing.T) {
 }
 
 ```
+
+## Stargazers over time
+[![Stargazers over time](https://starchart.cc/GoFinalPack/pf_util.svg?variant=adaptive)](https://starchart.cc/GoFinalPack/pf_util)

@@ -46,6 +46,6 @@ func TestCustomerChineseName(t *testing.T) {
 
 func TestCustomerAddress(t *testing.T) {
 	d := pf_util.DesensitizedUtil{}
-	result := d.Method("address", "四川省成都市高新区天府三街", 10)
+	result := d.Method("address", "四川省成都市高新区天府三街", 7)
 	fmt.Println(result)
 }
